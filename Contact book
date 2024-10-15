@@ -1,46 +1,76 @@
+# Simple Contact Book Implementation
 
-#Function to remove contact
+contacts = {}
 
+# Function to add a contact
+def add_contact(name, phone, email):
+    if name in contacts:
+        print(f"Contact {name} already exists.")
+    else:
+        contacts[name] = {'Phone': phone, 'Email': email}
+        print(f"Contact {name} added successfully.")
+
+# Function to remove a contact
 def remove_contact(name):
+    if name in contacts:
+        del contacts[name]
+        print(f"Contact {name} removed successfully.")
+    else:
+        print(f"Contact {name} does not exist.")
 
-if name in contacts:
-
-del contacts [name]
-
-print(f"Contact (name) removed successfully.") # Confirmation message
-
-else:
-
-print("Contact (name) does not exist.")
-
-#Function to view details of contact
-
+# Function to view details of a contact
 def view_contact(name):
+    if name in contacts:
+        print(f"Name: {name}")
+        print(f"Phone: {contacts[name]['Phone']}")
+        print(f"Email: {contacts[name]['Email']}")
+    else:
+        print(f"Contact {name} not found.")
 
-if name in contacts:
-
-print("Name: (name)") # Print contact's name
-
-print(f"Phone: (contacts [name]['Phone']}") # Print contact's phone number
-
-print(f"Email: contacts [name] ['Email']}") # Print contact's email
-
-else:
-
-print(f"Contact (name) not found.")
-
-#Function to list all contacts
-
+# Function to list all contacts
 def list_contacts():
+    if contacts:
+        print("Contact List:")
+        for name, details in contacts.items():
+            print(f"Name: {name}, Phone: {details['Phone']}, Email: {details['Email']}")
+    else:
+        print("No contacts found.")
 
-if contacts:
+# Main program loop
+def main():
+    while True:
+        print("\nContact Book Menu:")
+        print("1. Add Contact")
+        print("2. Remove Contact")
+        print("3. View Contact")
+        print("4. List Contacts")
+        print("5. Exit")
 
-print("Contact List:")
+        choice = input("Enter your choice: ")
 
-for name, details in contacts.items():
+        if choice == '1':
+            name = input("Enter contact name: ")
+            phone = input("Enter phone number: ")
+            email = input("Enter email address: ")
+            add_contact(name, phone, email)
 
-print("Name: (name), Phone: (details['Phone']), Email: (details['Email'])")
+        elif choice == '2':
+            name = input("Enter contact name to remove: ")
+            remove_contact(name)
 
-else:
+        elif choice == '3':
+            name = input("Enter contact name to view: ")
+            view_contact(name)
 
-print("No contacts found.")
+        elif choice == '4':
+            list_contacts()
+
+        elif choice == '5':
+            print("Exiting the contact book. Goodbye!")
+            break
+
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
