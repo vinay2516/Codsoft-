@@ -1,1 +1,46 @@
 
+#Function to remove contact
+
+def remove_contact(name):
+
+if name in contacts:
+
+del contacts [name]
+
+print(f"Contact (name) removed successfully.") # Confirmation message
+
+else:
+
+print("Contact (name) does not exist.")
+
+#Function to view details of contact
+
+def view_contact(name):
+
+if name in contacts:
+
+print("Name: (name)") # Print contact's name
+
+print(f"Phone: (contacts [name]['Phone']}") # Print contact's phone number
+
+print(f"Email: contacts [name] ['Email']}") # Print contact's email
+
+else:
+
+print(f"Contact (name) not found.")
+
+#Function to list all contacts
+
+def list_contacts():
+
+if contacts:
+
+print("Contact List:")
+
+for name, details in contacts.items():
+
+print("Name: (name), Phone: (details['Phone']), Email: (details['Email'])")
+
+else:
+
+print("No contacts found.")
